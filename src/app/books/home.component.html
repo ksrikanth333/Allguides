@@ -1,3 +1,115 @@
-<div style="background-image:url('https://images6.alphacoders.com/330/330109.jpg') ;width: 1500px;;height: 660px;">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary " >
+    <div class="container" style="margin-left:2%">
+    
+        <a class="navbar-brand" style="color: white;">Book Donation Management App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="nav nav-pills flex-grow-1">
+                <li class="nav-item"><a class="nav-link active" [routerLink]="['/home']" style="color: white;background-color: rgb(156, 4, 80);">Home</a></li>
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/books']" style="color: white;">Books</a></li>            
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/purchaseorders']" style="color: white;">Purchase Orders</a></li>            
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/receiveorders']" style="color: white;">Receive Orders</a></li>            
+            </ul>
+        </div>
+        
+        
+    </div>
+    <div class="d-flex" style="margin-right: 0.5%;">
+        <button class="btn btn-success" (click)="openNewBook(newBookModel)">Donate Or Sell</button>
+    </div>
+</nav>
+<div style="background-image:url('https://media.istockphoto.com/vectors/open-book-with-an-upside-down-pages-vector-id1129548247?k=20&m=1129548247&s=612x612&w=0&h=QYI9YIC_-5M5AqMwxdC5SS7r-CEJf2V9BudHoVrp7Mk=');width:100%;height: 680px;">
     
 </div>
+
+
+<ng-template #newBookModel let-modal>
+
+    <div class="modal-header">
+  
+      <h4 class="modal-title" id="modal-basic-title">Donate Or Sell Book</h4>
+  
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+  
+        <span aria-hidden="true">×</span>
+  
+      </button>
+  
+    </div>
+  
+    <div class="modal-body">
+  
+        <div class="card" style="margin-top: 3%;margin-left: 1%;margin-right: 1%;">
+            
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+                <div class="form-group" style="margin-left: 2%;margin-right: 2%;margin-top: .5%;">
+                    <label for="pname">Book Name</label>
+                    <input class="form-control" type="text" id="pname" [(ngModel)]="bookName" name="bname" 
+                    required #nameField="ngModel" [class.fielderror]="form.submitted && nameField.invalid">
+                    <div [hidden]="!form.submitted ||nameField.valid" class="alert alert-danger">
+                        Enter Book Name
+                    </div>
+                </div>
+                <div class="form-group" style="margin-left: 2%;margin-right: 2%;margin-top: .5%;">
+                    <label for="pcategory">Category</label>
+                    <select class="form-control"  [(ngModel)]='bookCategory' name="bcategory"
+                    required #catField="ngModel" [class.fielderror]="form.submitted && catField.invalid" >
+                        <option value="" disabled selected hidden>Select Category</option>
+                        <option>Education</option>
+                        <option>Compititive Exam Books</option>
+                        <option>Literature</option>
+                        <option>IT Programming</option>
+                        <option>Cloud Tehnology</option>
+                        
+                    </select>
+                    <div [hidden]="!form.submitted ||catField.valid" class="alert alert-danger">
+                        Please Select Category
+                    </div>
+                </div>
+               
+               
+                <div class="form-group" style="margin-left: 2%;margin-right: 2%;margin-top: .5%;">
+                    <label for="pauth">Book Author Name</label>
+                    <input class="form-control" type="text" id="pauth" [(ngModel)]="authorName" name="bauthorname"
+                    required #authorField="ngModel" [class.fielderror]="form.submitted && authorField.invalid">
+                    <div [hidden]="!form.submitted ||authorField.valid" class="alert alert-danger">
+                        Enter Author Name
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-left: 2%;margin-right: 2%;margin-top: .5%;">
+                    <label for="psdname">Seller Or Donor Name</label>
+                    <input class="form-control" type="text" id="psdname" [(ngModel)]="sellerOrDonorName" name="bdonor"
+                    required #donorField="ngModel" [class.fielderror]="form.submitted && donorField.invalid">
+                    <div [hidden]="!form.submitted ||donorField.valid" class="alert alert-danger">
+                        Enter Seller Or Donor Name
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-left: 2%;margin-right: 2%;margin-top: .5%;">
+                    <label for="pprice">Price ₹</label>
+                    <input class="form-control" type="text" id="pprice" [(ngModel)]="price" name="bprice"
+                    required #priceField="ngModel" [class.fielderror]="form.submitted && priceField.invalid">
+                    <div [hidden]="!form.submitted ||priceField.valid" class="alert alert-danger">
+                        Enter Price
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2%;margin-left: 2%;margin-bottom: 1%;"><button class="btn btn-primary" type="submit" style="width: 70px;" >Sell</button></div>
+
+            </form>
+            
+        
+        </div>
+        
+    </div>
+  
+    
+  
+  </ng-template>
+
+

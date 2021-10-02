@@ -9,27 +9,44 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HomeComponent } from './books/home.component';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PurchaseordersComponent } from './books/orders/purchaseorders.component';
+import { ReceiveordersComponent } from './books/orders/receiveorders.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchAvailableBooksComponent,
     HomeComponent,
+    PurchaseordersComponent,
+    ReceiveordersComponent,
+    
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
     NgxPaginationModule,
     RouterModule.forRoot([
       
       { path:'books',component:SearchAvailableBooksComponent},
       { path:'home',component:HomeComponent},
+      {path:'purchaseorders',component:PurchaseordersComponent},
+      {path:'receiveorders',component:ReceiveordersComponent},
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'**',redirectTo:'home',pathMatch:'full'}
       
     ]),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

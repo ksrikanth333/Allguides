@@ -1,4 +1,4 @@
-export interface IBooks{
+export interface IPurchase{
     id:number;
     bookName:string,
     bookCategory:string
