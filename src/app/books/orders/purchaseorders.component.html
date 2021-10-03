@@ -11,7 +11,7 @@
                 <li class="nav-item"><a class="nav-link" [routerLink]="['/home']" style="color: white;">Home</a></li>
                 <li class="nav-item"><a class="nav-link " [routerLink]="['/books']" style="color: white;">Books</a></li>
                 <li class="nav-item"><a class="nav-link active" [routerLink]="['/purchaseorders']" style="color: white;background-color: rgb(156, 4, 80);">Purchase Orders</a></li>            
-                <li class="nav-item"><a class="nav-link" [routerLink]="['/receiveorders']" style="color: white;">Receive Orders</a></li> 
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/receiveorders']" style="color: white;">Sales Orders</a></li> 
             </ul>
         </div>
         
@@ -21,4 +21,34 @@
 </nav>
 
 
-<p>purchaseorders works!</p>
+
+<div class="card" style="margin-right: 10%;margin-left: 5%;padding-top: 1%;padding-left: 3%;padding-bottom: 2%;margin-top: 3%;padding-right: 3%;">
+    <h3>Purchased Books Details</h3>
+    <div class="card" style="width: auto;margin-top: 2%;" *ngFor="let item of purchasedBooks" >
+        <div class="card-header">
+            <h5>TransactionId :TR-{{item.id}}</h5>
+        </div>
+        <div class="card-body" >
+        
+            <h6 style="float: left;margin-right: 2%;font-weight: 600;">Date :</h6> <h6>{{item.pDate}}</h6>
+            <h6 style="float: left;margin-right: 2%;font-weight: 600;">Book Id :</h6> <h6>{{item.transactionId}}</h6>
+            <h6 style="float: left;margin-right: 2%;font-weight: 600;">Book Name :</h6> <h6>{{item.bookName}}</h6>
+            <h6 style="float: left;margin-right: 2%;font-weight: 600;">Book Category :</h6> <h6>{{item.bookCategory}}</h6>
+            <h6 style="float: left;margin-right: 2%;font-weight: 600;">Book Author Name :</h6> <h6>{{item.authorName}}</h6>
+            <h6 style="float: left;margin-right: 2%;font-weight: 600;">Seller OR Donor Name :</h6> <h6>{{item.sellerOrDonorName}}</h6>
+            <h6 style="float: left;margin-right: 2%;font-weight: 600;">Book Price :</h6> <h6>{{item.price}}</h6>
+        </div>
+        
+    </div>
+    
+    <div class="card" style="width: auto;margin-top: 2%;" *ngIf="noItems">
+    
+        <div class="card-body">
+        
+            No Items
+        </div>
+    </div>
+    
+</div>
+
+

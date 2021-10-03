@@ -3,6 +3,7 @@ import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { IBooks } from './books';
 import { BooksserviceService } from './booksservice.service';
+import { IPurchase } from './orders/purchase';
 
 @Component({
  // selector: 'app-search-available-books',
@@ -11,6 +12,7 @@ import { BooksserviceService } from './booksservice.service';
 })
 export class SearchAvailableBooksComponent implements OnInit {
    closeResult: string='';
+   pDate:string='';
   
     categories:string[]=["Education","Compititive Exam Books","Literature","IT Programming","Cloud Tehnology"];
     
@@ -26,6 +28,7 @@ export class SearchAvailableBooksComponent implements OnInit {
     //Edit
     //PurchaseBook
     purchaseid:number=0;
+    transactionId:number=1;
     purchasebookName:string='';
     purchasebookCategory:string='';
     purchaseauthorName:string='';
@@ -33,6 +36,7 @@ export class SearchAvailableBooksComponent implements OnInit {
     purchaseprice:number=0.0;
     purchaseBook:any;
     //purchaseBook
+    prBooks:IPurchase[]=[];
     filteredBooks:IBooks[]=[];
     books:IBooks[]=[
     // {
@@ -74,6 +78,7 @@ export class SearchAvailableBooksComponent implements OnInit {
   }
   ngOnInit(): void {
     this.booksservice.getBooks().subscribe((res)=>{this.books=res;this.filteredBooks=this.books;});
+    this.booksservice.getPurchasedItems().subscribe((res)=>this.prBooks=res);
     
   }
   search(){
@@ -87,6 +92,7 @@ export class SearchAvailableBooksComponent implements OnInit {
     if(confirm('Are sure you want to delete this item ?')){
       //put your delete method logic here
       this.booksservice.deleteBooks(id).subscribe((data)=>{this.ngOnInit()});
+      this.deleteToastr();
      }
       // this.booksservice.deleteBooks(id).subscribe((data)=>{this.ngOnInit()});
     // this.books.forEach((value,index)=>{
@@ -109,8 +115,13 @@ export class SearchAvailableBooksComponent implements OnInit {
     this.updateToastr();
   }
   buyBookDetails(){
+    if(this.prBooks.length!=0){
+      this.transactionId=this.prBooks.reduce((pr,cur)=>pr.id>cur.id?pr:cur).id+1
+    }
     this.purchaseBook={
-      id:this.purchaseid,
+      id:this.transactionId,
+      pDate:this.pDate,
+      transactionId:this.purchaseid,
       bookName:this.purchasebookName,
       bookCategory:this.purchasebookCategory,
       authorName:this.purchaseauthorName,
@@ -118,7 +129,8 @@ export class SearchAvailableBooksComponent implements OnInit {
       price:this.purchaseprice
     }
     
-    this.booksservice.purchaseBooks(this.purchaseBook).subscribe((data)=>{this.ngOnInit();this.buyToastr();});
+    this.booksservice.purchaseBooks(this.purchaseBook).subscribe((data)=>{this.ngOnInit();this.buyToastr();this.pDate=''});
+    console.log(this.pDate);
     
   }
   open(content:any,book:IBooks) {
@@ -175,6 +187,9 @@ export class SearchAvailableBooksComponent implements OnInit {
   buyToastr(){
     this.modalService.dismissAll();
     this.tsr.success("Purchase Completed Successfully","Books",{timeOut:3000});
+  }  
+  deleteToastr(){
+    this.tsr.success("Item Deleted Successfully","Books",{timeOut:3000});
   }  
 
 }

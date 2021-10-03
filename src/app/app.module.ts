@@ -14,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PurchaseordersComponent } from './books/orders/purchaseorders.component';
 import { ReceiveordersComponent } from './books/orders/receiveorders.component';
-
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 
 @NgModule({
@@ -34,6 +34,7 @@ import { ReceiveordersComponent } from './books/orders/receiveorders.component';
     HttpClientModule,
     NgbModule,
     NgxPaginationModule,
+    NgxBootstrapIconsModule,
     RouterModule.forRoot([
       
       { path:'books',component:SearchAvailableBooksComponent},
@@ -49,6 +50,7 @@ import { ReceiveordersComponent } from './books/orders/receiveorders.component';
     
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

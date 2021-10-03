@@ -11,7 +11,7 @@
                 <li class="nav-item"><a class="nav-link active" [routerLink]="['/home']" style="color: white;background-color: rgb(156, 4, 80);">Home</a></li>
                 <li class="nav-item"><a class="nav-link" [routerLink]="['/books']" style="color: white;">Books</a></li>            
                 <li class="nav-item"><a class="nav-link" [routerLink]="['/purchaseorders']" style="color: white;">Purchase Orders</a></li>            
-                <li class="nav-item"><a class="nav-link" [routerLink]="['/receiveorders']" style="color: white;">Receive Orders</a></li>            
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/receiveorders']" style="color: white;">Sales Orders</a></li>            
             </ul>
         </div>
         
@@ -98,7 +98,15 @@
                         Enter Price
                     </div>
                 </div>
-                
+                <div class="form-group" style="margin-left: 2%;margin-right: 2%;margin-top: 2%;">
+                    <label for="sDate">Date</label>
+                    <input class="form-control" type="date" id="sDate" [(ngModel)]="sDate" name="sDate"
+                    required #dateField="ngModel" [class.fielderror]="form.submitted && dateField.invalid" >
+                    <div [hidden]="!form.submitted || dateField.valid" class="alert alert-danger" >
+                     Select Date
+                    </div>
+
+                </div>
                 <div style="margin-top: 2%;margin-left: 2%;margin-bottom: 1%;"><button class="btn btn-primary" type="submit" style="width: 70px;" >Sell</button></div>
 
             </form>

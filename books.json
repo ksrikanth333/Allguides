@@ -2,30 +2,91 @@
   "IBooks": [
     {
       "id": 1,
-      "bookName": "Java",
+      "bookName": "java",
       "bookCategory": "IT Programming",
       "authorName": "James",
-      "sellerOrDonorName": "srikanth",
-      "price": "350"
+      "sellerOrDonorName": "Srikanth",
+      "price": "400"
     },
     {
       "id": 2,
-      "bookName": "Dot Net",
-      "bookCategory": "IT Programming",
-      "authorName": "Gill Cleeren",
-      "sellerOrDonorName": "vamshi",
+      "bookName": "Digital Electronics",
+      "bookCategory": "Education",
+      "authorName": "Agarwal",
+      "sellerOrDonorName": "Ramesh",
       "price": "250"
     },
     {
       "id": 3,
+      "bookName": "Wings Of Fire",
+      "bookCategory": "Literature",
+      "authorName": "Abdul Kalam",
+      "sellerOrDonorName": "Ravi",
+      "price": "200"
+    }
+  ],
+  "ISalesBooks": [
+    {
+      "id": 1,
+      "sDate": "2021-10-03",
+      "transactionId": 1,
+      "bookName": "java",
+      "bookCategory": "IT Programming",
+      "authorName": "James",
+      "sellerOrDonorName": "Srikanth",
+      "price": "400"
+    },
+    {
+      "id": 2,
+      "sDate": "2021-10-03",
+      "transactionId": 2,
       "bookName": "Digital Electronics",
       "bookCategory": "Education",
-      "authorName": "James",
-      "sellerOrDonorName": "ravi",
-      "price": "500"
+      "authorName": "Agarwal",
+      "sellerOrDonorName": "Ramesh",
+      "price": "250"
+    },
+    {
+      "id": 3,
+      "sDate": "2021-10-04",
+      "transactionId": 3,
+      "bookName": "Wings Of Fire",
+      "bookCategory": "Literature",
+      "authorName": "Abdul Kalam",
+      "sellerOrDonorName": "Ravi",
+      "price": "200"
     }
   ],
   "IPurchase": [
-    
+    {
+      "id": 1,
+      "pDate": "2021-10-03",
+      "transactionId": 2,
+      "bookName": "Digital Electronics",
+      "bookCategory": "Education",
+      "authorName": "Agarwal",
+      "sellerOrDonorName": "Ramesh",
+      "price": "250"
+    },
+    {
+      "id": 2,
+      "pDate": "2021-10-03",
+      "transactionId": 1,
+      "bookName": "java",
+      "bookCategory": "IT Programming",
+      "authorName": "James",
+      "sellerOrDonorName": "Srikanth",
+      "price": "400"
+    },
+    {
+      "id": 3,
+      "pDate": "2021-10-04",
+      "transactionId": 3,
+      "bookName": "Wings Of Fire",
+      "bookCategory": "Literature",
+      "authorName": "Abdul Kalam",
+      "sellerOrDonorName": "Ravi",
+      "price": "200"
+    }
   ]
 }

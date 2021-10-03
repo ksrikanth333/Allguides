@@ -1,7 +1,7 @@
-export interface IPurchase{
+export interface ISalesBooks{
     id:number;
-    pDate:string;
-    transactionId:number,
+    sDate:string;
+    transactionId:number;
     bookName:string;
     bookCategory:string;
     authorName:string;
